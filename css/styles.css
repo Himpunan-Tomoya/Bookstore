@@ -82,3 +82,42 @@
 .pr-15 {
     padding-right: 15px;
 }
+
+.container-fluid .row {
+    margin-left: 150px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.card-header {
+    background-color: white !important;
+}
+
+thead {
+    background-color: rgb(235, 235, 235);
+}
+
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    background: #ffffff;
+    border-radius: 45px;
+  }
+
+form.search input[type=text] {
+    outline-width: 0;
+}
+
+form.search button {
+    float: left;
+    width: 60px;
+    padding: 10px;
+    padding-left: 0;
+    background: #2195f300;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    border: none;
+    transition: 0.3s;
+}
