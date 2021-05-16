@@ -15,7 +15,7 @@
             <i class="fa fa-bars pr-10"></i> Menu
         </div>
         <a href="transaksi.php"><i class="fa fa-book pr-15"></i> Transaksi</a>
-        <a href="laporan.php"><i class="fa fa-pencil pr-15"></i> Laporan</a>
+        <a href="laporan.php" class="active"><i class="fa fa-pencil pr-15"></i> Laporan</a>
     </div>
     <!-- Konten -->
 

@@ -36,6 +36,10 @@
     padding-left: 40px;
     font-size: 21px;
   }
+
+  .sidenav a.active {
+    color: #f1f1f1;
+  }
 /* End of sidenav */
 
 /* Page content */
@@ -89,6 +93,10 @@
     margin-bottom: 50px;
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
 .card-header {
     background-color: white !important;
 }
@@ -106,8 +114,9 @@ form.search input[type=text] {
     border-radius: 45px;
   }
 
-form.search input[type=text] {
+form.search input[type=text]:focus {
     outline-width: 0;
+    border-color: rgb(0, 110, 255);
 }
 
 form.search button {
