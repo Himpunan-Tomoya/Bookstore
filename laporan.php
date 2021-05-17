@@ -18,6 +18,45 @@
         <a href="laporan.php" class="active"><i class="fa fa-pencil pr-15"></i> Laporan</a>
     </div>
     <!-- Konten -->
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card">
+                        <div class="card-header">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Judul Buku</th>
+                                        <th scope="col">Sisa Stock</th>
+                                        <th scope="col">Jumlah Terjual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            1
+                                        </th>
+                                        <td>
+                                            Laskar Pelangi
+                                        </td>
+                                        <td>
+                                            5
+                                        </td>
+                                        <td>
+                                            2
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
