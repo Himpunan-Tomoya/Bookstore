@@ -10,13 +10,13 @@
 </head>
 <body>
     <div class="login-form">
-        <form action="" method="post">
+        <form action="system/login-proses.php" method="post">
             <h2 class="text-center">Log in</h2>       
             <div class="mb-3 row">
-                <input type="text" class="form-control" placeholder="Username" required="required">
+                <input type="text" class="form-control" placeholder="Username" name="username" required="required">
             </div>
             <div class="mb-3 row">
-                <input type="password" class="form-control" placeholder="Password" required="required">
+                <input type="password" class="form-control" placeholder="Password" name="password" required="required">
             </div>
             <div class="mb-3 row">
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
