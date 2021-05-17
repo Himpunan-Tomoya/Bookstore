@@ -13,9 +13,9 @@
                                 <label id="dropdownLabel">--- Pilih Kategori ---</label>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="dropdown-item" href="#">Pengarang</a></li>
-                                <li><a class="dropdown-item" href="#">Harga</a></li>
-                                <li><a class="dropdown-item" href="#">Stok</a></li>
+                                <li onclick="kategoriOnClick('kategoriPengarang')"><a class="dropdown-item" href="#" id="kategoriPengarang">Pengarang</a></li>
+                                <li onclick="kategoriOnClick('kategoriHarga')"><a class="dropdown-item" href="#" id="kategoriHarga">Harga</a></li>
+                                <li onclick="kategoriOnClick('kategoriStok')"><a class="dropdown-item" href="#" id="kategoriStok">Stok</a></li>
                             </ul>
                         </div>
                     </div>
