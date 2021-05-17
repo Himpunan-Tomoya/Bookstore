@@ -46,8 +46,21 @@
                                             5
                                         </td>
                                         <td>
-                                            2
+                                            5
                                         </td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                            <br><br>
+                            <table>
+                                    <tr>
+                                        <th scope="col">Total Pemasukan</th>
+                                    </tr>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            Rp 450.000,-
+                                        </th>
                                     </tr>
                                 </tbody>
                             </table>
