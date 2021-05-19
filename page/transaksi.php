@@ -1,3 +1,7 @@
+<?php
+include("system/connection.php");
+if (!isset($_SESSION["nama"])) {
+?>
 <div class="main">
     <div class="container-fluid">
         <div class="row">
@@ -57,8 +61,27 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal">Order</button>
                                     </td>
                                 </tr>
+                                <?php 
+                                    $select = mysqli_query($connection, "SELECT * FROM tb_buku");
+                                    $data = mysqli_query($connection, "SELECT * FROM tb_buku");
+                                    $penerbit = mysqli_query($connection, "SELECT nama_penerbit, id_buku FROM tb_penerbit,tb_buku WHERE id_buku=1");
+                                    $data_penerbit = mysqli_fetch_array($penerbit);
+                                    while ($data = mysqli_fetch_array($select)) {
+                                    echo "
+                                        <tr role='row'>
+                                            <td class='dtr-control' tabindex='0'>" . $data["id_buku"] . "</td>
+                                            <td>" . $data["judul_buku"] . "</td>
+                                            <td>" . $data["pengarang"] . "</td>
+                                            <td>" . $data_penerbit["nama_penerbit"] . "</td>
+                                            <td> Rp " . $data["harga"] . "</td>
+                                            <td>" . $data["stok"] . "</td>
+                                        </tr>
+                                        ";
+                                    }
+                                ?>
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
@@ -89,3 +112,4 @@
         </div>
     </div>
 </div>
+<?php } ?>
