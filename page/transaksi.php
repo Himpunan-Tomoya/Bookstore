@@ -19,8 +19,10 @@ if (!isset($_SESSION["nama"])) {
                                 </select>
                                 <select name="filter" id="filter" class="float-end">
                                     <option value="">Filter</option>
-                                    <option value="Harga" <?php //if ($filter=="Harga"){ echo "selected"; } ?>>Harga</option>
-                                    <option value="Stok" <?php //if ($filter=="Stok"){ echo "selected"; } ?>>Stok</option>
+                                    <option value="Harga" <?php //if ($filter=="Harga"){ echo "selected"; } 
+                                                            ?>>Harga</option>
+                                    <option value="Stok" <?php //if ($filter=="Stok"){ echo "selected"; } 
+                                                            ?>>Stok</option>
                                 </select>
                             </form>
                         </div>
@@ -58,7 +60,7 @@ if (!isset($_SESSION["nama"])) {
                                             10
                                         </td>
                                         <td>
-                                            <button type="button" id="test12" class="editprofile fa fa-edit"></button>
+                                            <button href="edit.php" type="button" id="test12" class="editprofile fa fa-edit"></button>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal">Order</button>
                                         </td>
                                     </tr>

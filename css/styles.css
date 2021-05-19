@@ -9,18 +9,18 @@
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
-  }
-  
-  .sidenav a {
+}
+
+.sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 20px;
     color: #818181;
     display: block;
     transition: 0.3s;
-  }
-  
-  .sidenav-header {
+}
+
+.sidenav-header {
     padding: 8px 8px 8px 8px;
     margin-top: 5px;
     margin-bottom: 10px;
@@ -29,24 +29,25 @@
     color: #ffffff;
     display: block;
     background: rgb(53, 104, 182);
-  }
-  
-  .sidenav a:hover {
+}
+
+.sidenav a:hover {
     color: #f1f1f1;
     padding-left: 40px;
     font-size: 21px;
-  }
+}
 
-  .sidenav a.active {
+.sidenav a.active {
     color: #f1f1f1;
-  }
+}
+
 /* End of sidenav */
 
 /* Page content */
 .main {
-    margin-left: 100px; 
+    margin-left: 100px;
 }
-  
+
 .center {
     position: absolute;
     top: 50%;
@@ -55,7 +56,7 @@
     transform: translate(-50%, -50%);
 }
 
-.horizontal-center{
+.horizontal-center {
     text-align: center;
 }
 
@@ -64,7 +65,8 @@
 }
 
 .logout-button {
-    background-color: hsl(204, 74%, 62%); /* Green */
+    background-color: hsl(204, 74%, 62%);
+    /* Green */
     border: none;
     color: #ffffff;
     padding: 15px 32px;
@@ -94,7 +96,7 @@
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
@@ -111,7 +113,7 @@ form.search input[name=search] {
     border: 1px solid grey;
     background: #ffffff;
     border-radius: 45px;
-  }
+}
 
 form.search input:focus {
     outline-width: 0;
