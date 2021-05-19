@@ -76,6 +76,10 @@ if (!isset($_SESSION["nama"])) {
                                                 <td>" . $penerbit["nama_penerbit"] . "</td>
                                                 <td> Rp " . $data["harga"] . "</td>
                                                 <td>" . $data["stok"] . "</td>
+                                                <td>
+                                            <button type='button' id='test12' class='editprofile fa fa-edit'></button>
+                                            <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#mymodal'>Order</button>
+                                        </td>
                                             </tr>
                                             ";
                                     }
