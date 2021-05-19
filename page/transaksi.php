@@ -11,17 +11,18 @@ if (!isset($_SESSION["nama"])) {
                             <form class="search" action="action.php">
                                 <input type="text" placeholder="Search.." name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
+                                <button class="float-end">Filter</button>
+                                <input type="text" placeholder="10" class="float-end">
+                                <select name="" id="" class="float-end">
+                                    <option value="">Lebih dari</option>
+                                    <option value="">Kurang dari</option>
+                                </select>
+                                <select name="filter" id="filter" class="float-end">
+                                    <option value="">Filter</option>
+                                    <option value="Harga" <?php //if ($filter=="Harga"){ echo "selected"; } ?>>Harga</option>
+                                    <option value="Stok" <?php //if ($filter=="Stok"){ echo "selected"; } ?>>Stok</option>
+                                </select>
                             </form>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <label id="dropdownLabel">--- Pilih Kategori ---</label>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <li onclick="kategoriOnClick('kategoriPengarang')"><a class="dropdown-item" href="#" id="kategoriPengarang">Pengarang</a></li>
-                                    <li onclick="kategoriOnClick('kategoriHarga')"><a class="dropdown-item" href="#" id="kategoriHarga">Harga</a></li>
-                                    <li onclick="kategoriOnClick('kategoriStok')"><a class="dropdown-item" href="#" id="kategoriStok">Stok</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table">

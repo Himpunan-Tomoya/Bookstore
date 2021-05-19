@@ -105,16 +105,15 @@ thead {
     background-color: rgb(235, 235, 235);
 }
 
-form.search input[type=text] {
+form.search input[name=search] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
-    float: left;
     background: #ffffff;
     border-radius: 45px;
   }
 
-form.search input[type=text]:focus {
+form.search input:focus {
     outline-width: 0;
     border-color: rgb(0, 110, 255);
 }
