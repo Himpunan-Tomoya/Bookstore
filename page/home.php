@@ -4,7 +4,7 @@
     </div>
     <div class="row horizontal-center">
         <h1>
-            Selamat Datang, $user
+            Selamat Datang, <?php echo $_SESSION['nama']; ?>
         </h1>
     </div>
     <div class="row horizontal-center">
