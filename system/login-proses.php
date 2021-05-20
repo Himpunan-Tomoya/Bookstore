@@ -17,8 +17,8 @@ if ($num == 0) {
 <?php
 } else {
     while ($data = mysqli_fetch_array($select)) {
-        $_SESSION["username"] = $data["USERNAME"];
-        $_SESSION["nama"] = $data["NAMA"];
+        $_SESSION["username"] = $data["username"];
+        $_SESSION["nama"] = $data["nama"];
     }
     header("location:../index.php");
 }
