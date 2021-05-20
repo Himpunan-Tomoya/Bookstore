@@ -1,6 +1,5 @@
 <?php
 include("system/connection.php");
-if (!isset($_SESSION["nama"])) {
 ?>
     <div class="main">
         <div class="container-fluid">
@@ -119,4 +118,3 @@ if (!isset($_SESSION["nama"])) {
             </div>
         </div>
     </div>
-<?php } ?>
