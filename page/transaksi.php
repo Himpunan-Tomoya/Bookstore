@@ -79,7 +79,7 @@ include("system/connection.php");
                                             <td> Rp " . $data["harga"] . "</td>
                                             <td>" . $data["stok"] . "</td>
                                             <td>
-                                                <button type='button' id='test12' class='editprofile fa fa-edit'></button>
+                                                <button type='button' id='test12' class='editprofile fa fa-edit' data-bs-toggle='modal' data-bs-target='#editbuku" . $data['id_buku'] . "'></button>
                                                 <button type='button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#mymodal" . $data['id_buku'] . "'>Order</button>
                                             </td>
                                         </tr>
@@ -87,28 +87,57 @@ include("system/connection.php");
                                 ?>
                                 <!-- Pop up ORDER -->
                                 <div class="modal" id="mymodal<?= $data['id_buku'];?>" tabindex="-1" aria-labelledby="test12" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="mymodallabel">Order</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label>ID Buku</label>
-                                                    <input class="form-control" type="text" placeholder="<?= $data['id_buku'] ?>" aria-label="Disabled input example" disabled>
-                                                    <label>Admin</label>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                    <label>Nama Pembeli</label>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                </div>
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="mymodallabel">Order</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>ID Buku</label>
+                                                <input class="form-control" type="text" placeholder="<?= $data['id_buku'] ?>" aria-label="Disabled input example" disabled>
+                                                <label>Admin</label>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                <label>Nama Pembeli</label>
+                                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            </div>
 
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Order</button>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Order</button>
                                             </div>
                                         </div>
                                     </div>
+                                </div> <!-- end of pop up order -->
+                                <!-- pop up EDIT -->
+                                <div class="modal" id="editbuku<?= $data['id_buku'];?>" tabindex="-1" aria-labelledby="test12" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editbuku_label">Edit Buku : <?= $data['judul_buku'] ?></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>ID Buku</label>
+                                                <input class="form-control" type="text" placeholder="1" aria-label="Disabled input example" disabled>
+                                                <label>Judul Buku</label>
+                                                <input class="form-control" type="text" placeholder="<?= $data['judul_buku'] ?>" aria-label="Disabled input example" disabled>
+                                                <label>Pengarang</label>
+                                                <input class="form-control" type="text" placeholder="<?= $data['pengarang'] ?>" aria-label="Disabled input example" disabled>
+                                                <label>Penerbit</label>
+                                                <input class="form-control" type="text" placeholder="<?= $penerbit['nama_penerbit'] ?>" aria-label="Disabled input example" disabled>
+                                                <label>Harga</label>
+                                                <input class="form-control" type="text" placeholder="<?= $data['harga'] ?>" aria-label="Disabled input example" disabled>
+                                                <label>Stock</label>
+                                                <input type="text" class="form-control input-stok" value="<?= $data['stok'] ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-primary">Simpan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end of pop up EDIT -->
                                 <?php } ?> <!-- end of while -->
                             </tbody>
                         </table>

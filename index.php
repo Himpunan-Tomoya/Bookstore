@@ -18,7 +18,6 @@
         </div>
         <a href="index.php?page=transaksi"><i class="fa fa-book pr-15"></i> Transaksi</a>
         <a href="index.php?page=laporan"><i class="fa fa-pencil pr-15"></i> Laporan</a>
-        <a href="index.php?page=edit"><i class="fa fa-pencil pr-15"></i> Edit</a>
     </div>
     <!-- Konten -->
     <?php
