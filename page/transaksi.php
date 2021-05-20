@@ -119,7 +119,7 @@ include("system/connection.php");
                                             </div>
                                             <div class="modal-body">
                                                 <label>ID Buku</label>
-                                                <input class="form-control" type="text" placeholder="1" aria-label="Disabled input example" disabled>
+                                                <input class="form-control" type="text" placeholder="<?= $data['id_buku'] ?>" aria-label="Disabled input example" disabled>
                                                 <label>Judul Buku</label>
                                                 <input class="form-control" type="text" placeholder="<?= $data['judul_buku'] ?>" aria-label="Disabled input example" disabled>
                                                 <label>Pengarang</label>
