@@ -65,7 +65,18 @@ include("system/connection.php");
                                 </tr>
                                 <?php
                                 $select = mysqli_query($connection, "SELECT * FROM tb_buku");
-                                $data = mysqli_query($connection, "SELECT * FROM tb_buku");
+                                // update buku
+                                if(isset($_POST['submitUpdateBuku'])){
+                                    $idbuku = $_POST['idbuku'];
+                                    $hargabuku = $_POST['hargabuku'];
+                                    $stokbuku = $_POST['stokbuku'];
+                                    $apakahUpdateBerhasil = mysqli_query($connection, "CALL update_buku($idbuku, $hargabuku, $stokbuku)");
+                                    if(!$apakahUpdateBerhasil){
+                                        echo "<script> alert('Error!');</script>";
+                                    }else{
+                                        echo "<script> document.location = window.location.href </script>";
+                                    }
+                                }
                                 while ($data = mysqli_fetch_array($select)) {
                                     $id_penerbit = $data["id_penerbit"];
                                     $penerbit = mysqli_query($connection, "SELECT nama_penerbit FROM tb_penerbit WHERE id_penerbit = '$id_penerbit'");
@@ -117,24 +128,27 @@ include("system/connection.php");
                                                 <h5 class="modal-title" id="editbuku_label">Edit Buku : <?= $data['judul_buku'] ?></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <label>ID Buku</label>
-                                                <input class="form-control" type="text" placeholder="<?= $data['id_buku'] ?>" aria-label="Disabled input example" disabled>
-                                                <label>Judul Buku</label>
-                                                <input class="form-control" type="text" placeholder="<?= $data['judul_buku'] ?>" aria-label="Disabled input example" disabled>
-                                                <label>Pengarang</label>
-                                                <input class="form-control" type="text" placeholder="<?= $data['pengarang'] ?>" aria-label="Disabled input example" disabled>
-                                                <label>Penerbit</label>
-                                                <input class="form-control" type="text" placeholder="<?= $penerbit['nama_penerbit'] ?>" aria-label="Disabled input example" disabled>
-                                                <label>Harga</label>
-                                                <input class="form-control" type="text" placeholder="<?= $data['harga'] ?>" aria-label="Disabled input example" disabled>
-                                                <label>Stock</label>
-                                                <input type="text" class="form-control input-stok" value="<?= $data['stok'] ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary">Simpan</button>
-                                            </div>
+                                            <form action="" method="POST">
+                                                <div class="modal-body">
+                                                    <label>ID Buku</label>
+                                                    <input name="idbuku" value="<?= $data['id_buku'] ?>" hidden>
+                                                    <input class="form-control" type="number" value="<?= $data['id_buku'] ?>" disabled>
+                                                    <label>Judul Buku</label>
+                                                    <input class="form-control" type="text" placeholder="<?= $data['judul_buku'] ?>" disabled>
+                                                    <label>Pengarang</label>
+                                                    <input class="form-control" type="text" placeholder="<?= $data['pengarang'] ?>" disabled>
+                                                    <label>Penerbit</label>
+                                                    <input class="form-control" type="text" placeholder="<?= $penerbit['nama_penerbit'] ?>" disabled>
+                                                    <label>Harga</label>
+                                                    <input class="form-control" name="hargabuku" type="number" value="<?= $data['harga'] ?>" >
+                                                    <label>Stock</label>
+                                                    <input type="number" class="form-control input-stok" name="stokbuku" value="<?= $data['stok'] ?>">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" name="submitUpdateBuku" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div><!-- end of pop up EDIT -->
