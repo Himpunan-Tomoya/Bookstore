@@ -80,14 +80,14 @@ include("system/connection.php");
                                 }
                                 while ($data = mysqli_fetch_array($select)) {
                                     $id_penerbit = $data["id_penerbit"];
-                                    $penerbit = mysqli_query($connection, "SELECT nama_penerbit FROM tb_penerbit WHERE id_penerbit = '$id_penerbit'");
-                                    $penerbit = mysqli_fetch_assoc($penerbit);
+                                    $penerbit = mysqli_query($connection, "SELECT NamaPenerbit('$id_penerbit')");
+                                    $penerbit = mysqli_fetch_array($penerbit);
                                     echo "
                                         <tr role='row'>
                                             <td class='dtr-control' tabindex='0'>" . $data["id_buku"] . "</td>
                                             <td>" . $data["judul_buku"] . "</td>
                                             <td>" . $data["pengarang"] . "</td>
-                                            <td>" . $penerbit["nama_penerbit"] . "</td>
+                                            <td>" . $penerbit[0] . "</td>
                                             <td> Rp " . $data["harga"] . "</td>
                                             <td>" . $data["stok"] . "</td>
                                             <td>
