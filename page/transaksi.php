@@ -29,10 +29,8 @@ include("system/connection.php");
                                 <option value="<">Kurang dari</option>
                             </select>
                             <select name="filtertype" id="filter" class="float-end mx-1">
-                                <option value="Harga" <?php //if ($filter=="Harga"){ echo "selected"; } 
-                                                        ?>>Harga</option>
-                                <option value="Stok" <?php //if ($filter=="Stok"){ echo "selected"; } 
-                                                        ?>>Stok</option>
+                                <option value="Harga">Harga</option>
+                                <option value="Stok">Stok</option>
                             </select>
                             <label class="float-end mx-2">Filter :</label>
                         </form>
