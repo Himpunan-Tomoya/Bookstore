@@ -1,3 +1,16 @@
+
+<?php 
+    $select_terjual_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC"); 
+    $select_tbbuku = mysqli_query($connection, "SELECT * FROM tb_buku");
+    $count_terjual = 0;
+    $count_stoktersedia = 0;
+    foreach($select_terjual_from_tbriwayat as $data){
+        $count_terjual += $data['perubahan_stok'];
+    }
+    foreach($select_tbbuku as $data){
+        $count_stoktersedia += $data['stok'];
+    }
+?>
 <div class="main">
     <div class="container-fluid">
         <div class="row">
@@ -8,9 +21,11 @@
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Total Buku Terjual :</h5>
-                                <span class="h2 font-weight-bold mb-0"><label id="periodBalance">
-                                        <center>500</center>
-                                    </label></span>
+                                <span class="h2 font-weight-bold mb-0">
+                                    <label id="periodBalance">
+                                        <?= $count_terjual ?>
+                                    </label>
+                                </span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -28,7 +43,7 @@
                         <div class="row">
                             <div class="col">
                                 <h5 class="card-title text-uppercase text-muted mb-0">Stok buku tersedia</h5>
-                                <span class="h2 font-weight-bold mb-0"><label id="balance">1000</label></span>
+                                <span class="h2 font-weight-bold mb-0"><label id="balance"><?= $count_stoktersedia ?></label></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -56,8 +71,7 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                    $select_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC");
-                                    foreach ($select_from_tbriwayat as $data){
+                                    foreach ($select_terjual_from_tbriwayat as $data){
                                 ?>
                                     <tr>
                                         <td>
