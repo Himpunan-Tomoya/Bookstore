@@ -78,6 +78,13 @@ include("system/connection.php");
                                         echo "<script> document.location = window.location.href; </script>";
                                     }
                                 }
+                                if (isset($_POST['submitorder'])){
+                                    $idbuku = $_POST['order_idbuku'];
+                                    $namapembeli = $_POST['order_namapembeli'];
+                                    $jumlahbeli = $_POST['order_jumlahbeli'];
+                                    mysqli_query($connection, "CALL order_buku($idbuku, $jumlahbeli, '$namapembeli')");
+                                    echo "<script> document.location = window.location.href; </script>";
+                                }
                                 while ($data = mysqli_fetch_array($select)) {
                                     $id_penerbit = $data["id_penerbit"];
                                     $penerbit = mysqli_query($connection, "SELECT NamaPenerbit('$id_penerbit')");
@@ -105,19 +112,19 @@ include("system/connection.php");
                                                     <h5 class="modal-title" id="mymodallabel">Order Buku : <?= $data['judul_buku']; ?></h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <label>ID Buku</label>
-                                                    <input class="form-control" type="text" placeholder="<?= $data['id_buku'] ?>" aria-label="Disabled input example" disabled>
-                                                    <label>Admin</label>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                    <label>Nama Pembeli</label>
-                                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Order</button>
-                                                </div>
+                                                <form action="" method="POST">
+                                                    <div class="modal-body">
+                                                        <input class="form-control" name="order_idbuku" type="number" value="<?= $data['id_buku'] ?>" aria-label="input example" hidden>
+                                                        <label>Nama Pembeli</label>
+                                                        <input type="text" name="order_namapembeli" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                        <label>Jumlah Beli</label>
+                                                        <input type="number" name="order_jumlahbeli" class="form-control">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" name="submitorder" class="btn btn-primary">Order</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div> <!-- end of pop up order -->

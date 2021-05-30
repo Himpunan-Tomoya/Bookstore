@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION["username"])) {
     header("location: login.php");
 }
+include("system/connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

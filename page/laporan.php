@@ -48,27 +48,32 @@
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        <th scope="col">Waktu</th>
                                         <th scope="col">Judul Buku</th>
-                                        <th scope="col">Sisa Stock</th>
                                         <th scope="col">Jumlah Terjual</th>
+                                        <th scope="col">Nama Pembeli</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php 
+                                    $select_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC");
+                                    foreach ($select_from_tbriwayat as $data){
+                                ?>
                                     <tr>
-                                        <th scope="row">
-                                            1
-                                        </th>
                                         <td>
-                                            Laskar Pelangi
+                                            <?= $data['waktu'] ?>
                                         </td>
                                         <td>
-                                            5
+                                            <?= $data['judul_buku'] ?>
                                         </td>
                                         <td>
-                                            5
+                                            <?= $data['perubahan_stok'] ?>
+                                        </td>
+                                        <td>
+                                            <?= $data['nama_pembeli'] ?>
                                         </td>
                                     </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
