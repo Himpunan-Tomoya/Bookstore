@@ -26,9 +26,15 @@ if (isset($_POST['submitbuku'])) {
             $id_penerbit = (int) filter_var($id_penerbit, FILTER_SANITIZE_NUMBER_INT);
             $id_penerbit++;
             $id_penerbit = strval("C" . $id_penerbit);
+            mysqli_begin_transaction($connection);
             mysqli_query($connection, "INSERT INTO tb_penerbit VALUES('$id_penerbit', '$nama_penerbit')");
             mysqli_query($connection, "CALL tambah_buku('$id_penerbit', '$judul_buku', '$nama_pengarang', $harga, $stok)");
-            echo "<script> alert('Berhasil menambahkan buku dengan judul : " . $judul_buku . "');</script>";
+            if (mysqli_commit($connection)) {
+                echo "<script> alert('Berhasil menambahkan buku dengan judul : " . $judul_buku . "');</script>";
+            } else {
+                mysqli_rollback($connection);
+                echo "<script> alert('Gagal menambahkan buku!');</script>";
+            }
         }
     }
 }
