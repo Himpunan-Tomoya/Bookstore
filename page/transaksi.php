@@ -9,20 +9,20 @@ include("system/connection.php");
                     <div class="card-header">
                         <form class="search" action="" method="POST">
                             <input type="text" placeholder="Search.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button> 
+                            <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                        <?php if(isset($_POST['search'])){ ?> 
+                        <?php if (isset($_POST['search'])) { ?>
                             <form action="" method="POST">
-                                <button   button type="submit" name="resetsearch" class="btn btn-danger">Reset</button>
+                                <button button type="submit" name="resetsearch" class="btn btn-danger">Reset</button>
                             </form>
                         <?php } ?>
                         <form action="" method="POST">
-                            <?php if (isset($_POST['submitfilter'])){ ?> 
+                            <?php if (isset($_POST['submitfilter'])) { ?>
                                 <button type="submit" name="resetfilter" class="btn btn-danger float-end mx-1">Reset</button>
-                            <?php }else{ ?> 
+                            <?php } else { ?>
                                 <button type="submit" name="submitfilter" class="btn btn-primary float-end mx-1">Filter</button>
                             <?php } ?>
-                            
+
                             <input type="number" name="numbervalue" placeholder="10" class="float-end">
                             <select name="sort" id="" class="float-end mx-1">
                                 <option value=">">Lebih dari</option>
@@ -66,15 +66,15 @@ include("system/connection.php");
                                 if (isset($_POST['search'])) {
                                     $search = $_POST['search'];
                                     $select = mysqli_query($connection, "SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%'");
-                                } 
-                                if (isset($_POST['submitfilter'])){
-                                    if (!empty($_POST['numbervalue'])){
+                                }
+                                if (isset($_POST['submitfilter'])) {
+                                    if (!empty($_POST['numbervalue'])) {
                                         $number_value = $_POST['numbervalue'];
                                         $filtertype = $_POST['filtertype'];
                                         $sort = $_POST['sort'];
                                         echo "<h4>Results for $filtertype $sort $number_value :</h4>";
                                         $select = mysqli_query($connection, "SELECT * FROM tb_buku WHERE $filtertype $sort $number_value");
-                                    }else{
+                                    } else {
                                         echo "<script> document.location = window.location.href; </script>";
                                     }
                                 }
