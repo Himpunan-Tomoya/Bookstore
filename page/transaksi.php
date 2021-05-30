@@ -7,22 +7,34 @@ include("system/connection.php");
             <div class="col-lg-10 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <form class="search" action="action.php">
+                        <form class="search" action="" method="POST">
                             <input type="text" placeholder="Search.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                            <button class="float-end">Filter</button>
-                            <input type="text" placeholder="10" class="float-end">
-                            <select name="" id="" class="float-end">
-                                <option value="">Lebih dari</option>
-                                <option value="">Kurang dari</option>
+                            <button type="submit"><i class="fa fa-search"></i></button> 
+                        </form>
+                        <?php if(isset($_POST['search'])){ ?> 
+                            <form action="" method="POST">
+                                <button   button type="submit" name="resetsearch" class="btn btn-danger">Reset</button>
+                            </form>
+                        <?php } ?>
+                        <form action="" method="POST">
+                            <?php if (isset($_POST['submitfilter'])){ ?> 
+                                <button type="submit" name="resetfilter" class="btn btn-danger float-end mx-1">Reset</button>
+                            <?php }else{ ?> 
+                                <button type="submit" name="submitfilter" class="btn btn-primary float-end mx-1">Filter</button>
+                            <?php } ?>
+                            
+                            <input type="number" name="numbervalue" placeholder="10" class="float-end">
+                            <select name="sort" id="" class="float-end mx-1">
+                                <option value=">">Lebih dari</option>
+                                <option value="<">Kurang dari</option>
                             </select>
-                            <select name="filter" id="filter" class="float-end">
-                                <option value="">Filter</option>
+                            <select name="filtertype" id="filter" class="float-end mx-1">
                                 <option value="Harga" <?php //if ($filter=="Harga"){ echo "selected"; } 
                                                         ?>>Harga</option>
                                 <option value="Stok" <?php //if ($filter=="Stok"){ echo "selected"; } 
                                                         ?>>Stok</option>
                             </select>
+                            <label class="float-end mx-2">Filter :</label>
                         </form>
                     </div>
                     <div class="card-body">
@@ -51,6 +63,21 @@ include("system/connection.php");
                                         echo "<script> alert('Error!');</script>";
                                     } else {
                                         echo "<script> document.location = window.location.href </script>";
+                                    }
+                                }
+                                if (isset($_POST['search'])) {
+                                    $search = $_POST['search'];
+                                    $select = mysqli_query($connection, "SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%'");
+                                } 
+                                if (isset($_POST['submitfilter'])){
+                                    if (!empty($_POST['numbervalue'])){
+                                        $number_value = $_POST['numbervalue'];
+                                        $filtertype = $_POST['filtertype'];
+                                        $sort = $_POST['sort'];
+                                        echo "<h4>Results for $filtertype $sort $number_value :</h4>";
+                                        $select = mysqli_query($connection, "SELECT * FROM tb_buku WHERE $filtertype $sort $number_value");
+                                    }else{
+                                        echo "<script> document.location = window.location.href; </script>";
                                     }
                                 }
                                 while ($data = mysqli_fetch_array($select)) {
