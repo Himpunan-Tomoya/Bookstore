@@ -1,22 +1,21 @@
-
-<?php 
-    $select_terjual_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC"); 
-    $select_tbbuku = mysqli_query($connection, "SELECT * FROM tb_buku");
-    $count_stoktersedia = 0;
-    foreach($select_tbbuku as $data){
-        $count_stoktersedia += $data['stok'];
-    }
-    // catalog & view
-    $catalog_jumlah_terjual = mysqli_query($connection, "SELECT view_definition FROM information_schema.views WHERE TABLE_NAME = 'jmlh_terjual'");
-    $view_jumlah_terjual;
-    foreach ($catalog_jumlah_terjual as $row){
-        $view_jumlah_terjual = $row['view_definition'];
-    }
-    $execute_view_jumlah_terjual = mysqli_query($connection, $view_jumlah_terjual);
-    $count_terjual = 0;
-    foreach ($execute_view_jumlah_terjual as $row){
-        $count_terjual = $row['jumlah_terjual'];
-    }
+<?php
+$select_terjual_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC");
+$select_tbbuku = mysqli_query($connection, "SELECT * FROM tb_buku");
+$count_stoktersedia = 0;
+foreach ($select_tbbuku as $data) {
+    $count_stoktersedia += $data['stok'];
+}
+// catalog & view
+$catalog_jumlah_terjual = mysqli_query($connection, "SELECT view_definition FROM information_schema.views WHERE TABLE_NAME = 'jmlh_terjual'");
+$view_jumlah_terjual;
+foreach ($catalog_jumlah_terjual as $row) {
+    $view_jumlah_terjual = $row['view_definition'];
+}
+$execute_view_jumlah_terjual = mysqli_query($connection, $view_jumlah_terjual);
+$count_terjual = 0;
+foreach ($execute_view_jumlah_terjual as $row) {
+    $count_terjual = $row['jumlah_terjual'];
+}
 ?>
 <div class="main">
     <div class="container-fluid">
@@ -83,24 +82,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php 
-                                    foreach ($select_terjual_from_tbriwayat as $data){
-                                ?>
-                                    <tr>
-                                        <td>
-                                            <?= $data['waktu'] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data['judul_buku'] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data['perubahan_stok'] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data['nama_pembeli'] ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
+                                    <?php
+                                    foreach ($select_terjual_from_tbriwayat as $data) {
+                                    ?>
+                                        <tr>
+                                            <td>
+                                                <?= $data['waktu'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $data['judul_buku'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $data['perubahan_stok'] ?>
+                                            </td>
+                                            <td>
+                                                <?= $data['nama_pembeli'] ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

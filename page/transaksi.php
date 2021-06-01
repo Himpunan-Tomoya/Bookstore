@@ -78,7 +78,7 @@ include("system/connection.php");
                                         echo "<script> document.location = window.location.href; </script>";
                                     }
                                 }
-                                if (isset($_POST['submitorder'])){
+                                if (isset($_POST['submitorder'])) {
                                     $idbuku = $_POST['order_idbuku'];
                                     $namapembeli = $_POST['order_namapembeli'];
                                     $jumlahbeli = $_POST['order_jumlahbeli'];
