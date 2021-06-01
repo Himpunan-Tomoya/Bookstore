@@ -39,7 +39,7 @@ include("system/connection.php");
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">ID</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Judul Buku</th>
                                     <th scope="col">Pengarang</th>
                                     <th scope="col">Penerbit</th>
@@ -63,6 +63,11 @@ include("system/connection.php");
                                         echo "<script> document.location = window.location.href </script>";
                                     }
                                 }
+                                if (isset($_POST['submitdeletebuku'])){
+                                    $idbuku = $_POST['idbuku'];
+                                    mysqli_query($connection, "DELETE FROM tb_buku WHERE id_buku = $idbuku");
+                                    echo "<script> document.location = window.location.href; </script>";
+                                }
                                 if (isset($_POST['search'])) {
                                     $search = $_POST['search'];
                                     $select = mysqli_query($connection, "SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%'");
@@ -85,13 +90,15 @@ include("system/connection.php");
                                     mysqli_query($connection, "CALL order_buku($idbuku, $jumlahbeli, '$namapembeli')");
                                     echo "<script> document.location = window.location.href; </script>";
                                 }
+                                $count_number=0;
                                 while ($data = mysqli_fetch_array($select)) {
                                     $id_penerbit = $data["id_penerbit"];
                                     $penerbit = mysqli_query($connection, "SELECT NamaPenerbit('$id_penerbit')");
                                     $penerbit = mysqli_fetch_array($penerbit);
+                                    $count_number++;
                                     echo "
                                         <tr role='row'>
-                                            <td class='dtr-control' tabindex='0'>" . $data["id_buku"] . "</td>
+                                            <td class='dtr-control' tabindex='0'>" . $count_number . "</td>
                                             <td>" . $data["judul_buku"] . "</td>
                                             <td>" . $data["pengarang"] . "</td>
                                             <td>" . $penerbit[0] . "</td>
@@ -116,9 +123,9 @@ include("system/connection.php");
                                                     <div class="modal-body">
                                                         <input class="form-control" name="order_idbuku" type="number" value="<?= $data['id_buku'] ?>" aria-label="input example" hidden>
                                                         <label>Nama Pembeli</label>
-                                                        <input type="text" name="order_namapembeli" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                                        <input type="text" name="order_namapembeli" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                                         <label>Jumlah Beli</label>
-                                                        <input type="number" name="order_jumlahbeli" class="form-control">
+                                                        <input type="number" name="order_jumlahbeli" class="form-control" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -153,6 +160,7 @@ include("system/connection.php");
                                                         <input type="number" class="form-control input-stok" name="stokbuku" value="<?= $data['stok'] ?>">
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <button type="button" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#hapusbuku<?= $data['id_buku']; ?>" class="btn btn-danger">Hapus Buku</button>
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                         <button type="submit" name="submitUpdateBuku" class="btn btn-primary">Simpan</button>
                                                     </div>
@@ -160,6 +168,24 @@ include("system/connection.php");
                                             </div>
                                         </div>
                                     </div><!-- end of pop up EDIT -->
+                                    <!-- pop up DELETE CONFIRMATION -->
+                                    <div class="modal" id="hapusbuku<?= $data['id_buku']; ?>" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editbuku_label">Yakin Ingin Hapus Buku : <?= $data['judul_buku'] ?></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form action="" method="POST">
+                                                    <div class="modal-footer">
+                                                        <input type="number" name="idbuku" value="<?= $data['id_buku'] ?>" hidden>
+                                                        <button type="submit" name="submitdeletebuku" class="btn btn-danger">Hapus Buku</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div><!-- end of pop up DELETE CONFIRMATION -->
                                 <?php } ?>
                                 <!-- end of while -->
                             </tbody>
