@@ -1,5 +1,5 @@
 <?php
-$select_terjual_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 ORDER BY waktu DESC");
+$select_terjual_from_tbriwayat = mysqli_query($connection, "SELECT * FROM tb_riwayat INNER JOIN tb_buku ON tb_riwayat.id_buku = tb_buku.id_buku WHERE perubahan_stok>0 AND nama_pembeli != '' ORDER BY waktu DESC");
 $select_tbbuku = mysqli_query($connection, "SELECT * FROM tb_buku");
 $count_stoktersedia = 0;
 foreach ($select_tbbuku as $data) {
