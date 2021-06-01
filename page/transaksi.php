@@ -146,7 +146,7 @@ include("system/connection.php");
                                                         <label>Pengarang</label>
                                                         <input class="form-control" type="text" placeholder="<?= $data['pengarang'] ?>" disabled>
                                                         <label>Penerbit</label>
-                                                        <input class="form-control" type="text" placeholder="<?= $penerbit['nama_penerbit'] ?>" disabled>
+                                                        <input class="form-control" type="text" placeholder="<?= $penerbit[0] ?>" disabled>
                                                         <label>Harga</label>
                                                         <input class="form-control" name="hargabuku" type="number" value="<?= $data['harga'] ?>">
                                                         <label>Stock</label>
