@@ -8,6 +8,6 @@
         </h1>
     </div>
     <div class="row horizontal-center">
-        <a href="login.php"><button class="logout-button">Logout</button></a>
+        <a href="logout.php"><button class="logout-button">Logout</button></a>
     </div>
 </div>

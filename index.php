@@ -26,6 +26,7 @@ include("system/connection.php");
         <a href="index.php?page=transaksi"><i class="fa fa-book pr-15"></i> Transaksi</a>
         <a href="index.php?page=laporan"><i class="fa fa-pencil pr-15"></i> Laporan</a>
         <a href="index.php?page=tambah-buku"><i class="fa fa-plus pr-15"></i> Tambah Buku lah</a>
+        <a href="logout.php" class="fixed-bottom my-4"><i class="fa fa-sign-out-alt pr-15"></i>Log out</a>
     </div>
     <!-- Konten -->
     <?php
