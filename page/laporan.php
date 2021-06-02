@@ -72,7 +72,7 @@ foreach ($execute_view_jumlah_terjual as $row) {
                 <div class="card">
                     <div class="card-header">
                         <div class="card-body">
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Waktu</th>
