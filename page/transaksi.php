@@ -63,7 +63,7 @@ include("system/connection.php");
                                         echo "<script> document.location = window.location.href </script>";
                                     }
                                 }
-                                if (isset($_POST['submitdeletebuku'])){
+                                if (isset($_POST['submitdeletebuku'])) {
                                     $idbuku = $_POST['idbuku'];
                                     mysqli_query($connection, "DELETE FROM tb_buku WHERE id_buku = $idbuku");
                                     echo "<script> document.location = window.location.href; </script>";
@@ -90,7 +90,7 @@ include("system/connection.php");
                                     mysqli_query($connection, "CALL order_buku($idbuku, $jumlahbeli, '$namapembeli')");
                                     echo "<script> document.location = window.location.href; </script>";
                                 }
-                                $count_number=0;
+                                $count_number = 0;
                                 while ($data = mysqli_fetch_array($select)) {
                                     $id_penerbit = $data["id_penerbit"];
                                     $penerbit = mysqli_query($connection, "SELECT NamaPenerbit('$id_penerbit')");

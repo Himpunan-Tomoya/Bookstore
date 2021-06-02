@@ -10,9 +10,10 @@ function getpage($pattern, $subject)
     $pattern = str_replace('%', '.*', preg_quote($pattern, '/'));
     return (bool) preg_match("/^{$pattern}$/i", $subject);
 }
-function activeList($list){
+function activeList($list)
+{
     $pagenow = $_GET['page'];
-    if(getpage($pagenow, $list)){
+    if (getpage($pagenow, $list)) {
         echo "active";
     }
 }
