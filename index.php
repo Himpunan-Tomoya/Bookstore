@@ -12,9 +12,11 @@ function getpage($pattern, $subject)
 }
 function activeList($list)
 {
-    $pagenow = $_GET['page'];
-    if (getpage($pagenow, $list)) {
-        echo "active";
+    if (isset($_GET['page'])) {
+        $pagenow = $_GET['page'];
+        if (getpage($pagenow, $list)) {
+            echo "active";
+        }
     }
 }
 ?>
